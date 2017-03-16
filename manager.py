@@ -3,6 +3,7 @@
 from flask import Flask
 from login import log
 from user import user
+from cmd import cmd
 
 app = Flask(__name__, static_folder='static')
 # 生成随机32位的KEY, os.urandom(32)
@@ -10,6 +11,7 @@ app.secret_key = '\x11\x1fL\x931M\x16I\x8f\xddR\xc2jk\xe37\xdf\xbd\x8f\xd1\x9c\x
 
 app.register_blueprint(log)
 app.register_blueprint(user, url_prefix='/user')
+app.register_blueprint(cmd, url_prefix='/cmd')
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=9001, debug=True)
